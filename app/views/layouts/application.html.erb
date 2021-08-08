@@ -8,8 +8,13 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+<!--この記述でいいが、管理者と会員とでヘッダーに写す内容を変える必要があるので、if分などで分岐する-->
   <body>
+    <% if user_signed_in? %>
+      <li>
+        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+      </li>
+      
     <%= yield %>
   </body>
 </html>
